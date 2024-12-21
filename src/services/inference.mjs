@@ -3,7 +3,7 @@ import tf from '@tensorflow/tfjs-node';
 export const predictClassification = async (model, image) => {
     try {
         const tensor = tf.node
-            .decodeJpeg(image)
+            .decodeJpeg(image.buffer)
             .resizeNearestNeighbor([224, 224])
             .expandDims()
             .toFloat();

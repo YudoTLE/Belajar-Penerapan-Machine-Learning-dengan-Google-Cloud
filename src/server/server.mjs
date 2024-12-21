@@ -10,17 +10,19 @@ const port = process.env.PORT;
 const model = await loadModel();
 const frontend_url = process.env.FRONTEND_URL;
 
-const corsOptions = {
-    origin: frontend_url,
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-};
-
 app.set('port', port);
-app.set('model', model);
 
+// app.use(cors({
+//     origin: frontend_url,
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type'],
+// }));
+app.use(cors());
+app.use((req, res, next) => {
+    req.model = model;
+    next();
+});
 app.use(routes);
-app.use(cors(corsOptions));
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${ port }`);

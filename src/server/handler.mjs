@@ -4,7 +4,7 @@ import { addPrediction, getAllPredictions } from "../services/db.mjs";
 export const postPredictHandler = async (req, res) => {
     try {
         const image = req.file;
-        const model = app.get('model');
+        const model = req.model;
 
         if (image.size > 1000000) {
             const newError = new Error('Payload content length greater than maximum allowed: 1000000');
@@ -12,8 +12,8 @@ export const postPredictHandler = async (req, res) => {
             throw newError;
         }
 
-        const { result, suggestion } = await predictClassification(image, model);
-
+        const { result, suggestion } = await predictClassification(model, image);
+        
         await addPrediction({ result, suggestion });
 
         res.status(200).json({

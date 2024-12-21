@@ -4,8 +4,8 @@ import { postPredictHandler, getPredictionHistoryHandler } from '../server/handl
 
 const routes = express.Router();
 
-routes.post('/predict', upload.single('file'), postPredictHandler);
+routes.post('/predict', upload.single('image'), postPredictHandler);
 
-routes.get('/predict/history', getPredictionHistoryHandler);
+routes.get('/predict/histories', getPredictionHistoryHandler);
 
 export default routes;
