@@ -1,0 +1,24 @@
+{
+  "name": "belajar-penerapan-machine-learning-dengan-google-cloud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server/server.mjs",
+    "prod": "node src/server/server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "debug": "^4.4.0",
+    "nodemon": "^3.1.9"
+  }
+}
