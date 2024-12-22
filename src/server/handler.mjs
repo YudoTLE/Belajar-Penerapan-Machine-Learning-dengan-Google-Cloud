@@ -16,7 +16,7 @@ export const postPredictHandler = async (req, res) => {
         
         const { id, createdAt } = await addPrediction({ result, suggestion });
 
-        res.status(200).json({
+        res.status(201).json({
             status: 'success',
             message: 'Model is predicted successfully',
             data: {
