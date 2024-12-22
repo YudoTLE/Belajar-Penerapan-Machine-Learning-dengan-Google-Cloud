@@ -14,16 +14,16 @@ export const postPredictHandler = async (req, res) => {
 
         const { result, suggestion } = await predictClassification(model, image);
         
-        await addPrediction({ result, suggestion });
+        const { id, createdAt } = await addPrediction({ result, suggestion });
 
         res.status(200).json({
             status: 'success',
             message: 'Model is predicted successfully',
             data: {
-                id: '77bd90fc-c126-4ceb-828d-f048dddff746',
+                id,
                 result,
                 suggestion,
-                createdAt: new Date().toISOString()
+                createdAt
             }
         });
     } catch(error) {

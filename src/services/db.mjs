@@ -7,6 +7,7 @@ export const addPrediction = async (data) => {
         ...data,
         createdAt: new Date().toISOString()
     });
+    await ref.update({ id: ref.id });
     return (await ref.get()).data();
 };
 
